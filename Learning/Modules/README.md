@@ -61,3 +61,30 @@ function sub(a, b) {
 Above code will run in node but it will not run in the browser because it uses ```commonjs``` syntax for module if we use ```ES6``` it will preserve import and export module syntax like Typescript in Javascript file. we can change that in tsconfig.json file.
 
 If above solution not work maybe we need to use lite-server for that. we can install it using npm.
+
+## export default and change name of non default export
+We can directly access the export into the file in which we want to access using any name but in non default export we need to use same name as in export file but we can change that using ```as``` keyword to give in another name.
+
+Ex:-
+- script.ts (file in which we are importing)
+```ts
+import multiplication,{add as addition,sub} from './utils.js'
+
+console.log(addition(2,3));
+console.log(sub(5,2));
+console.log(multiplication(5,2));
+```
+- utils.ts (file in which we are exporting)
+```ts
+export function add(x:number,y:number):number{
+    return x+y;
+}
+
+export function sub(a:number,b:number):number{
+    return a-b;
+}
+
+export default function multi(a:number,b:number):number{
+    return a*b;
+}
+```
