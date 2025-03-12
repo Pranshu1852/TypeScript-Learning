@@ -8,4 +8,51 @@ Modules are executed within their own scope, not in the global scope. This means
 ## Non-modules
 It’s important to understand what TypeScript considers a module. The JavaScript specification declares that any JavaScript files without an import declaration, export, or top-level await should be considered a script and not a module.
 
-Inside a script file variables and types are declared to be in the shared global scope, and it’s assumed that you’ll either use the outFile compiler option to join multiple input files into one output file, or use multiple <script> tags in your HTML to load these files (in the correct order!).
+Inside a script file variables and types are declared to be in the shared global scope, and it’s assumed that you’ll either use the outFile compiler option to join multiple input files into one output file, or use multiple ```<script> tags in your HTML to load these files (in the correct order!)```.
+
+## import and export in TypeScript
+If we don't write export in utils file Typescript automatically find out the add and sub function but we get problem when we compile it and convert it into js.
+
+To solve this issue we can export the function in utils file which we want to export. If we write export into the utils file then Typescript goes into module mode so it don't find automatically.
+
+> ### Syntax
+> - script.ts(file in which we import function)
+> ```ts
+>    import {add,sub} from './utils.js'
+>
+>    console.log(add(2,3));
+>    console.log(sub(5,2));
+> ```
+> - utils.ts(file in which we export function)
+> ```ts
+>    export function add(x:number,y:number):number{
+>        return x+y;
+>    }
+>
+>    export function sub(a:number,b:number):number{
+>        return a-b;
+>    }
+> ```
+
+Corresponding output:-
+- script.js(file in which we import function)
+```js
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_js_1 = require("./utils.js");
+console.log((0, utils_js_1.add)(2, 3));
+console.log((0, utils_js_1.sub)(5, 2));
+```
+- utils.js(file in which we export function)
+```js
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.add = add;
+exports.sub = sub;
+function add(x, y) {
+    return x + y;
+}
+function sub(a, b) {
+    return a - b;
+}
+```
