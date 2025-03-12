@@ -88,3 +88,40 @@ export default function multi(a:number,b:number):number{
     return a*b;
 }
 ```
+
+## importing type in TypeScript
+In typescript we can import type similar to function or any variable but for more safer approach we can mention type keyword in front of the name of type which we are importing.
+
+Ex:-
+- script.ts (file in which we are importing)
+```ts
+import multiplication,{add as addition,sub,type User} from './utils.js'
+
+console.log(addition(2,3));
+console.log(sub(5,2));
+console.log(multiplication(5,2));
+
+let obj:User={
+    name: "John",
+    age: 20
+}
+```
+- utils.ts (file in which we are exporting)
+```ts
+export function add(x:number,y:number):number{
+    return x+y;
+}
+
+export function sub(a:number,b:number):number{
+    return a-b;
+}
+
+export default function multi(a:number,b:number):number{
+    return a*b;
+}
+
+export interface User{
+    name:string,
+    age:number
+}
+```
