@@ -56,3 +56,8 @@ function sub(a, b) {
     return a - b;
 }
 ```
+
+## Different behaviour in Node and browser
+Above code will run in node but it will not run in the browser because it uses ```commonjs``` syntax for module if we use ```ES6``` it will preserve import and export module syntax like Typescript in Javascript file. we can change that in tsconfig.json file.
+
+If above solution not work maybe we need to use lite-server for that. we can install it using npm.
