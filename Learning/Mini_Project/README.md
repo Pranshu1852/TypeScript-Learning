@@ -11,3 +11,15 @@ You may want to change these for a few reasons:
 - Your program doesn’t run in a browser, so you don’t want the "dom" type definitions
 - Your runtime platform provides certain JavaScript API objects (maybe through polyfills), but doesn’t yet support the full syntax of a given ECMAScript version
 - You have polyfills or native implementations for some, but not all, of a higher level ECMAScript version
+
+## Non-Null Assertion Operator
+The Non-Null Assertion Operator in TypeScript is a powerful tool that allows developers to bypass compile-time null and undefined checks when they are certain that a value is not null or undefined. This operator is denoted by an exclamation mark (!) placed after the variable or object being asserted as non-null.
+
+Ex:-
+```ts
+const btn=document.getElementById('btn')!;
+btn.addEventListener('click',(e)=>{
+
+})
+console.log(btn);
+```
