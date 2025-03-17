@@ -23,3 +23,14 @@ btn.addEventListener('click',(e)=>{
 })
 console.log(btn);
 ```
+
+## Type Assertions
+Sometimes we might have more specific information about a value's type and you want to make sure Typescript knows it too.
+
+We can assert a value's type by using the ```as``` keyword followed by specific type.
+
+Ex:-
+```ts
+let mystery:unknown = "Hello";
+let charlength=(mystery as string).length;
+```
