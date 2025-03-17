@@ -34,3 +34,16 @@ Ex:-
 let mystery:unknown = "Hello";
 let charlength=(mystery as string).length;
 ```
+
+## Type Assertions with DOM
+
+Ex:-
+```ts
+const btn=document.getElementById('btn')! as HTMLButtonElement;
+const input=document.getElementById('todoinput')! as HTMLInputElement;
+
+btn.addEventListener('click',(e)=>{
+    alert(input.value);
+    input.value="";
+});
+```
