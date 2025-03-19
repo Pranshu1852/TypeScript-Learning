@@ -154,3 +154,11 @@ store.id=2;
 store.amound=5;
 store.isOpen=false;
 ```
+
+## Constant Types with "as const"
+In typescript type of the const variable is the value provided. ```as const``` is used to make any variable act like const in code.
+
+Ex:-
+```ts
+let role=['admin','guest','editor'] as const;
+```
