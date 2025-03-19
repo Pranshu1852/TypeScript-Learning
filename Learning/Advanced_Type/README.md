@@ -136,3 +136,21 @@ numberOfwords.length;
 
 const numItems=getLength(['Sports','Cookies']);
 ```
+
+## Index Types
+Index type is used to make dynamic property in object with specific types.
+
+Ex:-
+```ts
+type Datastore={
+    [prop: string]: number | boolean;
+};
+
+let store: Datastore={
+
+};
+
+store.id=2;
+store.amound=5;
+store.isOpen=false;
+```
