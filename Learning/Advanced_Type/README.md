@@ -113,3 +113,26 @@ function init(entity: Entity){
 
 }
 ```
+
+## Functions Overload
+In Function even if we narrow the type using type guards but still at the time of the function call the variable in which we are storing the ans fill show the all union type to solve that issue we can declare function multiple times with one type with returning type.
+
+Ex:-
+```ts
+function getLength(val: string): string;
+function getLength(val: any[]): number;
+function getLength(val: string|any[]){
+    if(typeof val==="string"){
+        const numberOfwords=val.split(' ').length;
+        return `${numberOfwords} words`;
+    }
+
+    return val.length;
+}
+
+
+const numberOfwords=getLength('Does this work?')
+numberOfwords.length;
+
+const numItems=getLength(['Sports','Cookies']);
+```
