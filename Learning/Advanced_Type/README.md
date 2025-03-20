@@ -174,3 +174,16 @@ let someObj: Record<string, number | string>= {
 
 someObj[2]="jkdkjs";
 ```
+
+## satisfies Keyword
+It checks if the object follows that type and do not allow to add another property after that.
+
+Ex:-
+```ts
+let obj={
+    entry1:2,
+    entry2:3,
+} satisfies Record<string,number>
+
+// obj.entry3=5 Not allow
+```
