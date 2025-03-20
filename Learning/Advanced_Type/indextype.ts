@@ -1,5 +1,5 @@
 type Datastore={
-    [prop: string]: number | boolean;
+    [prop: string]: number | string,
 };
 
 let store: Datastore={
@@ -8,4 +8,3 @@ let store: Datastore={
 
 store.id=2;
 store.amound=5;
-store.isOpen=false;

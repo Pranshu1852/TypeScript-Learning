@@ -162,3 +162,15 @@ Ex:-
 ```ts
 let role=['admin','guest','editor'] as const;
 ```
+
+## Record Type 
+It work same as index type just syntax is different.
+
+Ex:-
+```ts
+let someObj: Record<string, number | string>= {
+    name:"asdsad"
+};
+
+someObj[2]="jkdkjs";
+```
