@@ -45,3 +45,21 @@ function getProp<T extends object,U extends keyof T>(obj: T, key: U){
     return val;
 }
 ```
+
+## Indexed Access Type
+indexed access type is used to get the type of particular property of object type.
+
+Ex:-
+```ts
+type Appuser={
+    name: string;
+    age: number;
+    permission:{
+        id: string;
+        title: string;
+        description: string;
+    }[];
+};
+
+type permission=Appuser['permission']
+```
