@@ -1,12 +1,14 @@
 // One way to create class and initialize variables in typescript
 class User{
-    name: string;
-    age: number;
+    // name: string;
+    // age: number;
     readonly array:string[];
 
-    constructor(n:string,a:number){
-        this.name=n;
-        this.age=a;
+    constructor(public name:string,private age:number){
+    }
+
+    show(){
+        console.log('Hello');
     }
 }
 
@@ -31,6 +33,13 @@ class User2{
 
     static show(){
         console.log('Hello');
+    }
+}
+
+class Employee extends User{
+    constructor(n:string,a:number){
+        super(n,a); // need to call before accessing the memeber of super class
+        super.name
     }
 }
 
