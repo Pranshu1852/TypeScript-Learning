@@ -4,7 +4,7 @@ class User{
     // age: number;
     readonly array:string[];
 
-    constructor(public name:string,private age:number){
+    constructor(private name:string,protected age:number){
     }
 
     show(){
@@ -39,7 +39,8 @@ class User2{
 class Employee extends User{
     constructor(n:string,a:number){
         super(n,a); // need to call before accessing the memeber of super class
-        super.name
+        super.name // Not work because it is private
+        super.age // Work because it is protected and can be accessible in sub class
     }
 }
 
