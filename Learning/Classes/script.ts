@@ -2,6 +2,7 @@
 class User{
     name: string;
     age: number;
+    readonly array:string[];
 
     constructor(n:string,a:number){
         this.name=n;
@@ -19,4 +20,6 @@ const user=new User('John',20);
 const user1=new User1('John',20);
 
 user.age; // Public so it is accessible
+user.array=['new']; // we can't reassign some value that is readonly
+user.array.push('new'); // But we can push new value in array
 user1.age; // Private so it is not accessible out side of he class
