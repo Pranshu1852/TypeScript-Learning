@@ -44,6 +44,18 @@ class Employee extends User{
     }
 }
 
+// Can't create the instance of abstract class first need to extend it with other class and then create the instance of that class
+abstract class UIElements{
+    id:string;
+    constructor(id:string){
+        this.id=id;
+    }
+
+    getElement(){
+
+    }
+}
+
 // static method are accessible without creating a instance of class
 User2.id;
 User2.show();
