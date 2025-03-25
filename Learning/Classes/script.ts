@@ -26,7 +26,17 @@ class User2{
     get fullName(){
         return this.Firstname+' '+this.LastName;
     }
+
+    static id="USER";
+
+    static show(){
+        console.log('Hello');
+    }
 }
+
+// static method are accessible without creating a instance of class
+User2.id;
+User2.show();
 
 const user=new User('John',20);
 const user1=new User1('John',20);
