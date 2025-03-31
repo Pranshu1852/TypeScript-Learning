@@ -41,6 +41,12 @@ function logger(target, ctx) {
     console.log('Logger Decorator');
     console.log(target);
     console.log(ctx);
+    return class extends target {
+        constructor() {
+            super(...arguments);
+            this.age = 35;
+        }
+    };
 }
 let Person = (() => {
     let _classDecorators = [logger];
@@ -65,3 +71,5 @@ let Person = (() => {
     })();
     return Person = _classThis;
 })();
+const p1 = new Person();
+console.log(p1);
