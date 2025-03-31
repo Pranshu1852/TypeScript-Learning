@@ -77,3 +77,52 @@ Logger Decorator
 }
 Person { name: 'John', age: 35 }
 ```
+
+## Class constructor in decorator
+Class constructor in decorator will run every time new instance of the base class is created.
+
+Ex:-
+```ts
+function logger<T extends new (...args: any[]) => any>(target: T,ctx: ClassDecoratorContext){
+    console.log('Logger Decorator');
+    console.log(target);
+    console.log(ctx);
+
+    return class extends target{
+        constructor(...args:any[]){
+            super(...args);
+            console.log('class constructor');
+            console.log(this);
+        }
+    };
+}
+
+@logger
+class Person{
+    name="John";
+
+    greet(){
+        console.log('Hi ',this.name);
+    }
+}
+
+const p1=new Person();
+const p2=new Person();
+console.log(p1);
+```
+
+Output:-
+```js
+Logger Decorator
+[class Person]
+{
+  kind: 'class',
+  name: 'Person',
+  metadata: undefined,
+  addInitializer: [Function (anonymous)]
+}
+class constructor
+Person { name: 'John' }
+class constructor
+Person { name: 'John' }
+```

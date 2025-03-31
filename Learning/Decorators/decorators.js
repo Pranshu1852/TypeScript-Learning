@@ -42,9 +42,10 @@ function logger(target, ctx) {
     console.log(target);
     console.log(ctx);
     return class extends target {
-        constructor() {
-            super(...arguments);
-            this.age = 35;
+        constructor(...args) {
+            super(...args);
+            console.log('class constructor');
+            console.log(this);
         }
     };
 }
@@ -72,4 +73,5 @@ let Person = (() => {
     return Person = _classThis;
 })();
 const p1 = new Person();
+const p2 = new Person();
 console.log(p1);
