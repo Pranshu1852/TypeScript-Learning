@@ -12,10 +12,17 @@ function logger<T extends new (...args: any[]) => any>(target: T,ctx: ClassDecor
     };
 }
 
+function autobind(target: (...args: any[])=>any,ctx: ClassMethodDecoratorContext){
+    ctx.addInitializer(function(this: any) {
+        this[ctx.name]=this[ctx.name].bind(this);
+    });
+}
+
 @logger
 class Person{
     name="John";
 
+    @autobind
     greet(){
         console.log('Hi ',this.name);
     }
@@ -24,3 +31,6 @@ class Person{
 const p1=new Person();
 const p2=new Person();
 console.log(p1);
+
+let greeting=p1.greet;
+greeting();
