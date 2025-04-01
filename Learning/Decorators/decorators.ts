@@ -18,19 +18,22 @@ function autobind(target: (...args: any[])=>any,ctx: ClassMethodDecoratorContext
     });
 }
 
-function fieldLogger(target: undefined, ctx: ClassFieldDecoratorContext){
-    console.log(target);
-    console.log(ctx);
-
-    return (initialValue: any)=>{
-        console.log(initialValue);
-        return 'new';
+function replacer(value: string){
+    return function fieldLogger(target: undefined, ctx: ClassFieldDecoratorContext){
+        console.log(target);
+        console.log(ctx);
+    
+        return (initialValue: any)=>{
+            console.log(initialValue);
+            return value;
+        }
     }
 }
 
+
 @logger
 class Person{
-    @fieldLogger
+    @replacer('n')
     name="John";
 
     @autobind
