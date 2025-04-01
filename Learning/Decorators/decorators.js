@@ -54,26 +54,40 @@ function autobind(target, ctx) {
         this[ctx.name] = this[ctx.name].bind(this);
     });
 }
+function fieldLogger(target, ctx) {
+    console.log(target);
+    console.log(ctx);
+    return (initialValue) => {
+        console.log(initialValue);
+        return 'new';
+    };
+}
 let Person = (() => {
     let _classDecorators = [logger];
     let _classDescriptor;
     let _classExtraInitializers = [];
     let _classThis;
     let _instanceExtraInitializers = [];
+    let _name_decorators;
+    let _name_initializers = [];
+    let _name_extraInitializers = [];
     let _greet_decorators;
     var Person = _classThis = class {
-        constructor() {
-            this.name = (__runInitializers(this, _instanceExtraInitializers), "John");
-        }
         greet() {
             console.log('Hi ', this.name);
+        }
+        constructor() {
+            this.name = (__runInitializers(this, _instanceExtraInitializers), __runInitializers(this, _name_initializers, "John"));
+            __runInitializers(this, _name_extraInitializers);
         }
     };
     __setFunctionName(_classThis, "Person");
     (() => {
         const _metadata = typeof Symbol === "function" && Symbol.metadata ? Object.create(null) : void 0;
+        _name_decorators = [fieldLogger];
         _greet_decorators = [autobind];
         __esDecorate(_classThis, null, _greet_decorators, { kind: "method", name: "greet", static: false, private: false, access: { has: obj => "greet" in obj, get: obj => obj.greet }, metadata: _metadata }, null, _instanceExtraInitializers);
+        __esDecorate(null, null, _name_decorators, { kind: "field", name: "name", static: false, private: false, access: { has: obj => "name" in obj, get: obj => obj.name, set: (obj, value) => { obj.name = value; } }, metadata: _metadata }, _name_initializers, _name_extraInitializers);
         __esDecorate(null, _classDescriptor = { value: _classThis }, _classDecorators, { kind: "class", name: _classThis.name, metadata: _metadata }, null, _classExtraInitializers);
         Person = _classThis = _classDescriptor.value;
         if (_metadata) Object.defineProperty(_classThis, Symbol.metadata, { enumerable: true, configurable: true, writable: true, value: _metadata });
